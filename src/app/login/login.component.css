@@ -1,0 +1,37 @@
+.form-control{
+    border-radius: 0px !important;
+}
+.container-fluid{
+    position: absolute;
+    height: 50%;
+    top: 0%;
+    background-color: rgb(40, 46, 215) !important;
+}
+.container{
+    position: relative;
+    z-index: 1;
+    top: 35vh;
+    height: 50vh;
+    top: 25vh;
+}
+button{
+    border-radius: 0px;
+}
+.inp-holder{
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media (max-width:600px) {
+    .container-fluid{
+        width: 100%;
+    }
+    .container{
+        width: 95vw;
+        /* height: 40vh; */
+    }
+    .inp-holder{
+        height: 70%;
+    }
+}

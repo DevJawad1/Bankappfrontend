@@ -1,0 +1,11 @@
+<div class="container">
+    <p>Want to buy coin ? 1 coin: $0.1</p>
+
+    <div class="flex">
+        <p>Quantity</p> <input type="number" (input)="calc()" [(ngModel)]="quantity" placeholder="Click and Input your quantity here">
+    </div>
+    <div class="flex2">
+        <p>Cost</p><p class="total">{{total}}</p>
+    </div>
+    <button (click)="buyCoin()">Buy coin</button>
+</div>

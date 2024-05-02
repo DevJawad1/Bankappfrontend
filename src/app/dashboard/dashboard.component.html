@@ -1,0 +1,186 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link href="
+https://cdn.jsdelivr.net/npm/remixicon@4.0.1/fonts/remixicon.min.css
+" rel="stylesheet">
+<div class="overall d-flex" style="overflow-x: hidden;">
+    <div>
+        <app-side-nav [receiveCondition]="navCondition"></app-side-nav>
+    </div>
+    <div class="main-content {{navCondition}}" style="width: {{mainWidth}}">
+        <header class="">
+            <div class="d-flex header-title-wrapper">
+                <button class="toggle-btn btn" (click)="changecondition()" style="position: relative; z-index: 2; margin-top: -10px;">
+                    <i class="bi bi-list"></i>
+                </button>
+                <div class="header-title">
+                    <div>
+                        <h1>Analytics</h1>
+                        <p>Display analytics about your trade <span></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="header-action">
+                <button class="btn btn-primary">
+                    <span></span>
+                    Add trader
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section>
+                <h3 class="section-head">Overview</h3>
+                <div class="analytics">
+                    <div class="analytic shadow">
+                        <div class="analytic-icon">
+                            <span><i class="ri-wallet-3-fill"></i></span>
+                        </div>
+                        <div class="analytic-info">
+                            <h4 class="pt-1">Total Balance</h4>
+                            <h1>$10k</h1>
+                        </div>
+                    </div>
+                    <div class="analytic shadow">
+                        <div class="analytic-icon">
+                            <span><i class="ri-coins-fill"></i></span>
+                        </div>
+                        <div class="analytic-info">
+                            <h4 class="pt-1">Current coin</h4>
+                            <h1>500 <small class="text-success">($20)</small></h1>
+                        </div>
+                    </div>
+                    <div class="analytic shadow">
+                        <div class="analytic-icon">
+                            <span><i class="ri-hand-coin-fill"></i></span>
+                        </div>
+                        <div class="analytic-info">
+                            <h4 class="pt-1">Trade coin</h4>
+                            <h1>120 <small class="text-danger">($7)</small></h1>
+                        </div>
+                    </div>
+                    <div class="analytic shadow">
+                        <div class="analytic-icon">
+                            <span><i class="ri-bar-chart-2-fill"></i></span>
+                        </div>
+                        <div class="analytic-info">
+                            <h4 class="pt-1">Total Trade</h4>
+                            <h1>15</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <div class="block-grid">
+                    <div class="revenue-card">
+                        <h3 class="section-head">Total Revenue</h3>
+                        <div class="rev-content">
+                            <img src="../../assets/profile-icon2.PNG" alt="">
+                        <div class="rev-info">
+                            <h3>Ralph Anderson</h3>
+                            <h1>#8k <small>coin value</small></h1>
+                        </div>
+                        <div class="rev-sum">
+                            <h4>Total Icome</h4>
+                            <h2>$13,850</h2>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="graph-card">
+                        <h3 class="section-head">Previous chart</h3>
+                        <div class="graph-content shadow">
+                            <div class="graph-head">
+                                <div class="icons-wrapper">
+                                    <div class="icon">
+                                        <span class="text-main"></span>
+                                    </div>
+                                    <div class="icon">
+                                        <span class="text-success"></span>
+                                    </div>
+                                </div>
+                                <div class="graph-select">
+                                    <select name="" id="">
+                                        <option value="">September</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="graph-board">
+                                <canvas id="revenueChart" width="100%"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+    let ctx = document.getElementById("revenueChart")
+    ctx.height = 150
+
+    let revChart = new Chart(ctx, {
+        type:"line",
+        data:{
+            labels:["Sept 1", "Sept 3", "Sept 6", "Sept 9", "Sept 12", "Sept 12", "Sept 15", "Sept 18", "Sept 21", "Saept 24", "Sept 27", "Sept 30"]
+        },
+        dataset:[
+            {
+                label:"Views",
+                borderColor:"green",
+                borderWidth:"3",
+                backgroundColor:"rgba(235, 247, 245, 0.5)",
+                data:[0,30,60,25,60,25,50,10,50,90,120]
+            },
+            {
+                label:"Views",
+                borderColor:"blue",
+                borderWidth:"3",
+                backgroundColor:"rgba(233, 238, 253, 0.5)",
+                data:[0,60,25,100,20,75,30,55,20,60,20]
+            }
+        ],
+        options:{
+            responsive:true,
+            tooltips:{
+                intersect:false,
+                mode:"index"
+            }
+        }
+    })
+
+//     @ViewChild('revenueChart', { static: true }) chartCanvas: ElementRef;
+
+// ngAfterViewInit(): void {
+//   const ctx: CanvasRenderingContext2D = this.chartCanvas.nativeElement.getContext('2d');
+  
+//   const revChart = new Chart(ctx, {
+//     type: 'line',
+//     data: {
+//       labels: ["Sept 1", "Sept 3", "Sept 6", "Sept 9", "Sept 12", "Sept 12", "Sept 15", "Sept 18", "Sept 21", "Sept 24", "Sept 27", "Sept 30"],
+//       datasets: [
+//         {
+//           label: "Views",
+//           borderColor: "green",
+//           borderWidth: 3,
+//           backgroundColor: "rgba(235, 247, 245, 0.5)",
+//           data: [0, 30, 60, 25, 60, 25, 50, 10, 50, 90, 120]
+//         },
+//         {
+//           label: "Views",
+//           borderColor: "blue",
+//           borderWidth: 3,
+//           backgroundColor: "rgba(233, 238, 253, 0.5)",
+//           data: [0, 60, 25, 100, 20, 75, 30, 55, 20, 60, 20]
+//         }
+//       ],
+//     },
+//     options: {
+//       responsive: true,
+//       tooltips: {
+//         intersect: false,
+//         mode: 'index'
+//       }
+//     }
+//   });
+</script>
